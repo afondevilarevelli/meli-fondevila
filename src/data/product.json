@@ -1,0 +1,81 @@
+{
+  "name": "Smart TV Phillips 6900",
+  "descripion": "<p>El compromiso de Philips es brindar nuevas e innovadoras tecnologías. Es por esa razón que se centra en los detalles para poder ofrecer productos que marcan la diferencia y crean una experiencia visual más increíble y auténtica.</p><br/><p>Con el Smart TV 43PFD6917 vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.</p>",
+  "images": ["/images/products/image_1.webp", "/images/products/image_2.webp"],
+  "price": 90699,
+  "stock": 15,
+  "basicFeatures": [
+    "Su resolución es Full HD.",
+    "Tecnología HDR para una calidad de imagen mejorada.",
+    "Modo de sonido: Dolby Atmos, Surround.",
+    "Manejalo por comando de voz.",
+    "Google Assistant incorporado.",
+    "Sistema operativo Android 10."
+  ],
+  "features": [
+    { "label": "Resolución", "value": "Full HD" },
+    { "label": "Tipo de pantalla", "value": "LED" },
+    { "label": "Es smart", "value": "Sí" },
+    { "label": "Cantidad de puertos HDMI", "value": "3" },
+    {
+      "label": "Aplicaciones integradas",
+      "value": "YouTube, Prime Video, Disney+, Google Play Movies & TV, Google Play Music, Netflix, Google Play Store"
+    }
+  ],
+  "seller": {
+    "name": "Trendy Deals",
+    "reputation": "GOOD",
+    "location": "Villa Urquiza, Capital Federal",
+    "timeShipping": "VERY_GOOD"
+  },
+  "questions": [
+    {
+      "text": "Haces envios los sábados?",
+      "asnwer": "Sí"
+    },
+    {
+      "text": "Buenas, el control remoto es alfanumerico, gracias",
+      "asnwer": "Sí"
+    },
+    {
+      "text": "Hola tiene alarma o sea se prende a una hora determinada",
+      "asnwer": "No"
+    },
+    {
+      "text": "Comando de voz?",
+      "asnwer": "Hola, si, el control cuenta con comando de voz. Saludos!"
+    },
+    {
+      "text": "Buenas el control remoto es alfanumerico",
+      "asnwer": "Hola! Consulta nuevamente mañana Saludos Gabriel. OPEN FACTORY. Más de 15 años de trayectoria en el mercado."
+    },
+    {
+      "text": "Garantía",
+      "asnwer": "Hola, Desde que realiza la compra tiene 5 días de prueba con nosotros, luego 12 meses de garantía con la marca del producto. Saludos. Saludos, Trendy Deals."
+    }
+  ],
+  "opinions": [
+    {
+      "text": "Le doy 2 estrella la verdad los pihilis de ante son mejores que estos. Si sos medio sordo ni te lo recomiendo pesimo sonido en lo estructural tambien bajaron la calidad del plastico tengo 2 uno de 55 y otro tambien de 43 de 3d de antes de muy buena calidad y este le herre. Lo unico bueno es su conectividad y app y de poco menu para corregir el tv. El sonido tendre que comprarme un centro musical con blutooth para mejorarlo. Sobre la imagen pasable ahora vamos a ver cuanto duran? uno tiene 12 años y el grande 3 años. Lo compre porque estaba a un buen precio y porque confie en la marca? la proxima tendre que mirar bien sus funciones y las coneciones de atras. Vean los comentarios y analicen bien su compra saludos.",
+      "owner": {
+        "name": "María Marta González",
+        "image": "/images/people/person_1.jpg"
+      },
+      "rating": "Mala",
+      "created_at": "2023-04-25T18:25:43.511Z",
+      "likes": 45,
+      "dislikes": 0
+    },
+    {
+      "text": "Tiene muy buena definición. Al tener android lo puedo vincular como espejo o transmitir a la pantalla con mi tablet o el celu. Muy conforme.",
+      "owner": {
+        "name": "Jorge Ramírez",
+        "image": "/images/people/person_2.jpg"
+      },
+      "rating": "Muy buena",
+      "created_at": "2023-04-22T18:25:43.511Z",
+      "likes": 6,
+      "dislikes": 1
+    }
+  ]
+}
