@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import BorderBox from "../../UI/BorderBox";
-import { IProduct } from "@/models/product";
 import { Box, Flex, Icon, Button, Link, Text, Select } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { FiTruck, FiMapPin } from "react-icons/fi";
 import BuyInfo from "./BuyInfo";
+import { useProductContext } from "@/contexts/ProductContext";
 
-type TProps = {
-  product: IProduct;
-};
+export default function BuySection() {
+  const { product } = useProductContext();
 
-export default function BuySection({ product }: TProps) {
   const [unitsSelected, setUnitsSelected] = useState<number>(1);
 
   function onBuyClicked() {
@@ -48,7 +46,7 @@ export default function BuySection({ product }: TProps) {
           <Text fontSize={14}>
             Vendido por{" "}
             <Link href="/" as={NextLink} color={"blue.300"}>
-              {product.seller.name.toUpperCase()}
+              {product?.seller.name.toUpperCase()}
             </Link>
           </Text>
 
@@ -59,7 +57,7 @@ export default function BuySection({ product }: TProps) {
         </Box>
 
         <Text as="b">
-          {product.stock > 0 ? "Stock disponible" : "Sin stock"}
+          {product && product.stock > 0 ? "Stock disponible" : "Sin stock"}
         </Text>
 
         <Flex gap={2} flexWrap={"nowrap"} align={"baseline"}>
@@ -73,7 +71,7 @@ export default function BuySection({ product }: TProps) {
             variant={"flushed"}
           >
             {/* @ts-ignore */}
-            {[...Array(product.stock).keys()].map((_, idx) => (
+            {[...Array(product?.stock || 0).keys()].map((_, idx) => (
               <option key={idx} value={idx + 1}>
                 {idx + 1} unidad{idx > 0 && "es"}
               </option>
@@ -81,7 +79,7 @@ export default function BuySection({ product }: TProps) {
           </Select>
 
           <Text fontSize={14} color={"gray.400"}>
-            ({product.stock} disponibles)
+            ({product?.stock} disponibles)
           </Text>
         </Flex>
 
@@ -89,7 +87,7 @@ export default function BuySection({ product }: TProps) {
           Comprar ahora
         </Button>
 
-        <BuyInfo product={product} />
+        <BuyInfo />
       </Flex>
     </BorderBox>
   );

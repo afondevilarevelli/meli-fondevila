@@ -1,4 +1,3 @@
-import { IProduct } from "@/models/product";
 import React from "react";
 import {
   Box,
@@ -17,15 +16,14 @@ import {
 } from "@/lib/utils";
 import { Rating } from "react-simple-star-rating";
 import { FaStar } from "react-icons/fa";
+import { useProductContext } from "@/contexts/ProductContext";
 
-type TProps = {
-  product: IProduct;
-};
+export default function RatingOverview() {
+  const { product } = useProductContext();
 
-export default function RatingOverview({ product }: TProps) {
   const theme = useTheme();
 
-  const allRatingsAsNumber = product.opinions.map((op) =>
+  const allRatingsAsNumber = product?.opinions.map((op) =>
     getRatingNumber(op.rating)
   );
 
@@ -33,27 +31,27 @@ export default function RatingOverview({ product }: TProps) {
     <Stack>
       <HStack spacing={4}>
         <Text fontSize={"6xl"} color={"blue.500"} fontWeight={500}>
-          {getAverageRating(product)}
+          {getAverageRating(product!)}
         </Text>
 
         <VStack spacing={0} align={"flex-start"}>
           <Rating
             readonly={true}
             allowFraction
-            initialValue={getAverageRating(product)}
+            initialValue={getAverageRating(product!)}
             emptyStyle={{ display: "flex" }}
             fillStyle={{ display: "-webkit-inline-box" }}
             size={24}
             fillColor={theme.colors.blue[400]}
           />
           <Text fontSize={12} ml={6} color={"gray.500"}>
-            ({product.opinions.length} calificaciones)
+            ({product?.opinions.length} calificaciones)
           </Text>
         </VStack>
       </HStack>
 
       {ALL_RATINGS_VALUES.map((val, idx) => {
-        const amount = allRatingsAsNumber.filter((n) => n == val).length;
+        const amount = allRatingsAsNumber?.filter((n) => n == val).length;
         return (
           <Flex key={idx} align={"center"} gap={4}>
             <Box
@@ -69,7 +67,9 @@ export default function RatingOverview({ product }: TProps) {
                 left: 0,
                 borderRadius: 99,
                 height: 1,
-                width: `${(amount / allRatingsAsNumber.length) * 100}%`,
+                width: `${
+                  (amount || 0 / (allRatingsAsNumber?.length || 1)) * 100
+                }%`,
                 zIndex: 2,
                 bgColor: "gray.600",
               }}

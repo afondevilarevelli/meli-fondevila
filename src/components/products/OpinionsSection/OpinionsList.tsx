@@ -1,5 +1,4 @@
 import { ALL_RATINGS_VALUES } from "@/lib/utils";
-import { IProduct } from "@/models/product";
 import {
   Button,
   ButtonGroup,
@@ -17,10 +16,7 @@ import {
 import React from "react";
 import { FaArrowDown, FaStar } from "react-icons/fa";
 import OpinionItem from "./OpinionItem";
-
-type TProps = {
-  product: IProduct;
-};
+import { useProductContext } from "@/contexts/ProductContext";
 
 const FilterBtnStyle = {
   colorScheme: "blue",
@@ -33,7 +29,9 @@ const FilterBtnStyle = {
   },
 };
 
-export default function OpinionsList({ product }: TProps) {
+export default function OpinionsList() {
+  const { product } = useProductContext();
+
   return (
     <Stack spacing={6}>
       <ButtonGroup spacing="6" size={"sm"}>
@@ -80,7 +78,7 @@ export default function OpinionsList({ product }: TProps) {
       </ButtonGroup>
 
       <VStack divider={<StackDivider />} spacing={6}>
-        {product.opinions.map((op, idx) => (
+        {product?.opinions.map((op, idx) => (
           <OpinionItem key={idx} opinion={op} />
         ))}
       </VStack>

@@ -1,21 +1,19 @@
-import { IProduct } from "@/models/product";
 import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import RatingOverview from "./RatingOverview";
 import OpinionsList from "./OpinionsList";
+import { useProductContext } from "@/contexts/ProductContext";
 
-type TProps = {
-  product: IProduct;
-};
+export default function OpinionsSection() {
+  const { product } = useProductContext();
 
-export default function OpinionsSection({ product }: TProps) {
   return (
     <Flex gap={12}>
-      <RatingOverview product={product} />
+      <RatingOverview />
 
       <Box flex={1}>
         <Box width={"60%"}>
-          <OpinionsList product={product} />
+          <OpinionsList />
         </Box>
       </Box>
     </Flex>

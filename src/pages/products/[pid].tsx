@@ -23,16 +23,26 @@ import BuySection from "@/components/products/BuySection/BuySection";
 import SellerInfo from "@/components/products/SellerInfo/SellerInfo";
 import QuestionsSection from "@/components/products/QuestionsSection/QuestionsSection";
 import OpinionsSection from "@/components/products/OpinionsSection/OpinionsSection";
+import { useEffect } from "react";
+import { useProductContext } from "@/contexts/ProductContext";
 
 type TProps = {
-  product: IProduct;
+  prod: IProduct;
 };
 
-export default function ProductDetailsPage({ product }: TProps) {
+export default function ProductDetailsPage({ prod }: TProps) {
+  const { product, setProduct } = useProductContext();
+
   const containerWidth = useBreakpointValue({
     base: "100%",
     ["2xl"]: "80%",
   });
+
+  useEffect(() => {
+    setProduct(prod);
+  }, [prod]);
+
+  if (!product) return <></>;
 
   return (
     <Box width={containerWidth} mx={"auto"}>
@@ -85,34 +95,34 @@ export default function ProductDetailsPage({ product }: TProps) {
               spacing={4}
               align="stretch"
             >
-              <ProductDetails product={product} />
+              <ProductDetails />
               <>
                 <Text fontSize={"2xl"} mb={6}>
                   Quienes vieron este producto también compraron
                 </Text>
-                <RelatedProducts product={product} />
+                <RelatedProducts />
               </>
 
               <>
                 <Text fontSize={"2xl"} mb={6}>
                   Características
                 </Text>
-                <ProductFeatures product={product} />
+                <ProductFeatures />
               </>
 
               <>
                 <Text fontSize={"2xl"} mb={6}>
                   Descripción
                 </Text>
-                <ProductDescription product={product} />
+                <ProductDescription />
               </>
             </VStack>
           </Box>
 
           <Box width={"30%"}>
             <VStack spacing={6} align="stretch">
-              <BuySection product={product} />
-              <SellerInfo seller={product.seller} />
+              <BuySection />
+              <SellerInfo />
             </VStack>
           </Box>
         </Flex>
@@ -122,14 +132,14 @@ export default function ProductDetailsPage({ product }: TProps) {
         <Text fontSize={"2xl"} mb={6}>
           Preguntas y respuestas
         </Text>
-        <QuestionsSection product={product} />
+        <QuestionsSection />
 
         <Divider my={8} />
 
         <Text fontSize={"2xl"} mb={6}>
           Opiniones del producto
         </Text>
-        <OpinionsSection product={product} />
+        <OpinionsSection />
       </Box>
     </Box>
   );
@@ -138,7 +148,7 @@ export default function ProductDetailsPage({ product }: TProps) {
 export async function getServerSideProps({}) {
   return {
     props: {
-      product: productData,
+      prod: productData,
     },
   };
 }

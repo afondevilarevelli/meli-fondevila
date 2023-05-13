@@ -1,13 +1,9 @@
-import { IProduct } from "@/models/product";
 import { Flex, Icon, Link, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { FaAward, FaBackward, FaShieldAlt, FaTrophy } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
 import NextLink from "next/link";
-
-type TProps = {
-  product: IProduct;
-};
+import { useProductContext } from "@/contexts/ProductContext";
 
 type TBuyInfoItemProps = {
   icon: IconType;
@@ -38,7 +34,9 @@ const BuyInfoItem = ({
   );
 };
 
-export default function BuyInfo({ product }: TProps) {
+export default function BuyInfo() {
+  const { product } = useProductContext();
+
   return (
     <VStack spacing={4} align="stretch">
       <BuyInfoItem

@@ -1,5 +1,5 @@
+import { useProductContext } from "@/contexts/ProductContext";
 import { formatPrice } from "@/lib/utils";
-import { IProduct } from "@/models/product";
 import {
   Card,
   CardBody,
@@ -11,11 +11,9 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-type TProps = {
-  product: IProduct;
-};
+export default function RelatedProductItem() {
+  const { product } = useProductContext();
 
-export default function RelatedProductItem({ product }: TProps) {
   return (
     <Card
       align="center"
@@ -29,18 +27,18 @@ export default function RelatedProductItem({ product }: TProps) {
       transition={"transform .15s ease-in"}
     >
       <CardBody>
-        <Image src={product.images[0]} alt={product.name} width={"100%"} />
+        <Image src={product?.images[0]} alt={product?.name} width={"100%"} />
         <Divider />
 
         <Stack spacing="3" mt={2}>
           <Heading size="lg" fontWeight={400}>
-            $ {formatPrice(product.price)}
+            $ {formatPrice(product?.price!)}
           </Heading>
           <Text as={"b"} color={"green.400"} fontSize={14}>
             Envío gratis
           </Text>
           <Text fontSize={14} noOfLines={2}>
-            {product.name}
+            {product?.name}
           </Text>
         </Stack>
       </CardBody>

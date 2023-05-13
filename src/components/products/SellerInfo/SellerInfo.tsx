@@ -1,16 +1,16 @@
 import React from "react";
 import BorderBox from "../../UI/BorderBox";
-import { ISeller } from "@/models/seller";
 import { Flex, Icon, Link, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { FaAward } from "react-icons/fa";
 import SellerRating from "./SellerRating";
+import { useProductContext } from "@/contexts/ProductContext";
 
-type TProps = {
-  seller: ISeller;
-};
+export default function SellerInfo() {
+  const { product } = useProductContext();
 
-export default function SellerInfo({ seller }: TProps) {
+  const seller = product?.seller;
+
   return (
     <BorderBox>
       <Flex direction={"column"} gap={4}>
@@ -33,7 +33,7 @@ export default function SellerInfo({ seller }: TProps) {
           </Flex>
         </Flex>
 
-        <SellerRating seller={seller} />
+        <SellerRating seller={seller!} />
 
         <Link as={NextLink} href={"/"} color={"blue.400"}>
           <Text fontSize={"sm"}>Ver más datos de este vendedor</Text>

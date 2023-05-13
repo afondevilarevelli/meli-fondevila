@@ -1,12 +1,8 @@
-import { IProduct } from "@/models/product";
 import { IQuestion } from "@/models/question";
 import { Box, HStack, Link, Stack, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import NextLink from "next/link";
-
-type TProps = {
-  product: IProduct;
-};
+import { useProductContext } from "@/contexts/ProductContext";
 
 function QuestionTextItem({
   label,
@@ -48,10 +44,12 @@ const QuestionItem = ({ question }: { question: IQuestion }) => {
   );
 };
 
-export default function QuestionsList({ product }: TProps) {
+export default function QuestionsList() {
+  const { product } = useProductContext();
+
   return (
     <Stack spacing={6}>
-      {product.questions.map((question, idx) => (
+      {product?.questions.map((question, idx) => (
         <QuestionItem key={idx} question={question} />
       ))}
     </Stack>

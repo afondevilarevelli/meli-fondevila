@@ -4,15 +4,15 @@ import React from "react";
 import QuestionButton from "./QuestionButton";
 import QuestionInput from "./QuestionInput";
 import QuestionsList from "./QuestionsList";
+import { useProductContext } from "@/contexts/ProductContext";
 
-type TProps = {
-  product: IProduct;
-};
+export default function QuestionsSection() {
+  const { product } = useProductContext();
 
-export default function QuestionsSection({ product }: TProps) {
   function onSearch(value: string) {
     console.log(value);
   }
+
   return (
     <Box>
       <Text fontWeight={500} mb={4}>
@@ -38,7 +38,7 @@ export default function QuestionsSection({ product }: TProps) {
           Últimas realizadas
         </Text>
 
-        <QuestionsList product={product} />
+        <QuestionsList />
       </Box>
     </Box>
   );

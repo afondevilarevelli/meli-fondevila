@@ -5,7 +5,8 @@ import { DateTime } from "luxon";
 
 export const ALL_RATINGS_VALUES = [1, 2, 3, 4, 5];
 
-export function formatPrice(price: number) {
+export function formatPrice(price: number | null) {
+  if (!price) return "0";
   return price.toLocaleString();
 }
 
@@ -18,7 +19,9 @@ export function renderHtml(content: string) {
   return sanitizeHtml(content);
 }
 
-export function getAverageRating(product: IProduct) {
+export function getAverageRating(product: IProduct | null) {
+  if (!product) return 0;
+
   let allRatings = product.opinions.map((op) => getRatingNumber(op.rating));
   let sumAllRatings = allRatings.reduce((acc, act) => acc + act, 0);
 

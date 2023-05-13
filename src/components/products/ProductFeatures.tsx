@@ -1,10 +1,8 @@
-import { IProduct } from "@/models/product";
+import { useProductContext } from "@/contexts/ProductContext";
 import React from "react";
 
-type TProps = {
-  product: IProduct;
-};
+export default function ProductFeatures() {
+  const { product } = useProductContext();
 
-export default function ProductFeatures({ product }: TProps) {
   return <div>ProductFeatures</div>;
 }
